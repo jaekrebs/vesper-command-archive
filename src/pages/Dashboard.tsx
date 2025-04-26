@@ -1,19 +1,14 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import MainLayout from "@/components/Layout/MainLayout";
 import StatusDisplay from "@/components/UI/StatusDisplay";
 import CommandButton from "@/components/UI/CommandButton";
 import { Calendar, BookOpen, Archive, Clock, Settings } from "lucide-react";
-
 const Dashboard: React.FC = () => {
-  return (
-    <MainLayout>
+  return <MainLayout>
       <div className="space-y-8 animate-fade-in">
         <div>
-          <h1 className="text-3xl md:text-4xl font-mono text-vesper-gold mb-2">
-            Welcome, Commander S'Tari
-          </h1>
+          <h1 className="text-3xl md:text-4xl font-mono text-vesper-gold mb-2">Welcome, Commander!</h1>
           <p className="text-gray-400">
             Your private command bridge is ready. What would you like to access today?
           </p>
@@ -95,7 +90,9 @@ const Dashboard: React.FC = () => {
               <h3 className="font-mono text-vesper-teal">Current Mission</h3>
               <p className="text-white">Building the VESPERCORE Command Bridge</p>
               <div className="w-full bg-vesper-black rounded-full h-2 mt-2">
-                <div className="bg-vesper-gold h-2 rounded-full" style={{ width: '40%' }}></div>
+                <div className="bg-vesper-gold h-2 rounded-full" style={{
+                width: '40%'
+              }}></div>
               </div>
               <div className="text-xs text-gray-400 mt-1">Progress: 40%</div>
             </div>
@@ -119,7 +116,9 @@ const Dashboard: React.FC = () => {
                       <span>Optimal</span>
                     </div>
                     <div className="w-full bg-vesper-black rounded-full h-1.5 mt-1">
-                      <div className="bg-green-500 h-1.5 rounded-full" style={{ width: '95%' }}></div>
+                      <div className="bg-green-500 h-1.5 rounded-full" style={{
+                      width: '95%'
+                    }}></div>
                     </div>
                   </div>
                   <div>
@@ -128,7 +127,9 @@ const Dashboard: React.FC = () => {
                       <span>Stable</span>
                     </div>
                     <div className="w-full bg-vesper-black rounded-full h-1.5 mt-1">
-                      <div className="bg-vesper-teal h-1.5 rounded-full" style={{ width: '60%' }}></div>
+                      <div className="bg-vesper-teal h-1.5 rounded-full" style={{
+                      width: '60%'
+                    }}></div>
                     </div>
                   </div>
                   <div>
@@ -137,7 +138,9 @@ const Dashboard: React.FC = () => {
                       <span>Adapting</span>
                     </div>
                     <div className="w-full bg-vesper-black rounded-full h-1.5 mt-1">
-                      <div className="bg-yellow-500 h-1.5 rounded-full" style={{ width: '75%' }}></div>
+                      <div className="bg-yellow-500 h-1.5 rounded-full" style={{
+                      width: '75%'
+                    }}></div>
                     </div>
                   </div>
                 </div>
@@ -146,8 +149,6 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
-  );
+    </MainLayout>;
 };
-
 export default Dashboard;
