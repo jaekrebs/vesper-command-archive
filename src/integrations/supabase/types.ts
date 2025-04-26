@@ -9,7 +9,87 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      calendar_events: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          end_time: string
+          id: string
+          is_recurring: boolean | null
+          recurring_pattern: Json | null
+          start_time: string
+          title: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          end_time: string
+          id?: string
+          is_recurring?: boolean | null
+          recurring_pattern?: Json | null
+          start_time: string
+          title: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          end_time?: string
+          id?: string
+          is_recurring?: boolean | null
+          recurring_pattern?: Json | null
+          start_time?: string
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      daily_plans: {
+        Row: {
+          commanders_log: string | null
+          created_at: string | null
+          date: string
+          id: string
+          main_goals: Json | null
+          mood: string | null
+          mood_comment: string | null
+          notes: string | null
+          tasks: Json | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          commanders_log?: string | null
+          created_at?: string | null
+          date: string
+          id?: string
+          main_goals?: Json | null
+          mood?: string | null
+          mood_comment?: string | null
+          notes?: string | null
+          tasks?: Json | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          commanders_log?: string | null
+          created_at?: string | null
+          date?: string
+          id?: string
+          main_goals?: Json | null
+          mood?: string | null
+          mood_comment?: string | null
+          notes?: string | null
+          tasks?: Json | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

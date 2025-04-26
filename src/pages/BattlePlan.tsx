@@ -9,21 +9,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CalendarDays, CalendarRange, Upload } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const BattlePlan = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [calendarView, setCalendarView] = useState<"weekly" | "monthly">("weekly");
   const { toast } = useToast();
   
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     
-    // Display toast notification
+    // Create FormData for file upload
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    // Display processing toast
     toast({
-      title: "File uploaded",
-      description: `${file.name} has been uploaded. Calendar parsing functionality is coming soon.`,
+      title: "Processing calendar",
+      description: `Parsing ${file.name}...`,
       duration: 5000,
     });
     
@@ -69,7 +73,7 @@ const BattlePlan = () => {
             <div className="relative">
               <Button variant="outline" size="sm">
                 <Upload className="h-4 w-4 mr-2" />
-                Import
+                Import Calendar
                 <Input
                   type="file"
                   accept=".ics,.csv,.xlsx,.pdf"
@@ -94,35 +98,30 @@ const BattlePlan = () => {
 
         <Tabs defaultValue="weekly" className="w-full">
           <TabsList className="bg-vesper-navy/30 border border-vesper-navy">
-            <TabsTrigger value="weekly">WEEKLY VIEW</TabsTrigger>
+            <TabsTrigger value="weekly">WEEK OVERVIEW</TabsTrigger>
             <TabsTrigger value="tasks">TASKS</TabsTrigger>
             <TabsTrigger value="notes">NOTES</TabsTrigger>
-            <TabsTrigger value="energy">ENERGY</TabsTrigger>
+            <TabsTrigger value="mood">MOOD</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="weekly" className="mt-6">
-            {/* Weekly calendar is now shown above the tabs */}
+          <TabsContent value="weekly" className="mt-6 vesper-panel">
+            <h2 className="vesper-header text-xl mb-6">Week Overview</h2>
+            <WeeklyCalendar selectedDate={currentDate} />
           </TabsContent>
           
-          <TabsContent value="tasks">
-            <div className="vesper-panel">
-              <h2 className="vesper-header text-xl mb-6">Tasks Module</h2>
-              <p className="text-gray-400">Task management coming soon.</p>
-            </div>
+          <TabsContent value="tasks" className="mt-6 vesper-panel">
+            <h2 className="vesper-header text-xl mb-6">Task Management</h2>
+            <p className="text-gray-400">Task management functionality coming soon.</p>
           </TabsContent>
           
-          <TabsContent value="notes">
-            <div className="vesper-panel">
-              <h2 className="vesper-header text-xl mb-6">Field Notes</h2>
-              <p className="text-gray-400">Notes module coming soon.</p>
-            </div>
+          <TabsContent value="notes" className="mt-6 vesper-panel">
+            <h2 className="vesper-header text-xl mb-6">Field Notes</h2>
+            <p className="text-gray-400">Notes module coming soon.</p>
           </TabsContent>
           
-          <TabsContent value="energy">
-            <div className="vesper-panel">
-              <h2 className="vesper-header text-xl mb-6">Energy Tracking</h2>
-              <p className="text-gray-400">Energy tracking coming soon.</p>
-            </div>
+          <TabsContent value="mood" className="mt-6 vesper-panel">
+            <h2 className="vesper-header text-xl mb-6">Mood Tracking</h2>
+            <p className="text-gray-400">Mood tracking coming soon.</p>
           </TabsContent>
         </Tabs>
       </div>
