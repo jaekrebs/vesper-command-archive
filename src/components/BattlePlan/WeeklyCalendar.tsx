@@ -3,8 +3,12 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { startOfWeek, addDays, format } from "date-fns";
 
-const WeeklyCalendar = () => {
-  const startDate = startOfWeek(new Date(), { weekStartsOn: 1 }); // Start on Monday
+interface WeeklyCalendarProps {
+  selectedDate?: Date;
+}
+
+const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({ selectedDate = new Date() }) => {
+  const startDate = startOfWeek(selectedDate, { weekStartsOn: 1 }); // Start on Monday
   const weekDays = Array.from({ length: 5 }).map((_, index) => 
     addDays(startDate, index)
   );
