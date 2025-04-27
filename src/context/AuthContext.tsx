@@ -7,6 +7,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (password: string) => Promise<boolean>;
   logout: () => void;
+  username: string; // Add username property
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -15,6 +16,7 @@ export const COMMANDER_PASSWORD = "vespercore"; // In a real app, you'd use a pr
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("Commander"); // Default username
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -49,7 +51,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, username }}>
       {children}
     </AuthContext.Provider>
   );
