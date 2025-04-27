@@ -10,7 +10,7 @@ const Index: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const { isAuthenticated, login } = useAuth();
   const [displayText, setDisplayText] = useState("");
-  const welcomeText = "VESPERCORE v1.0 // COMMANDER S'TARI";
+  const welcomeText = "VESPERCORE v1.0 // COMMANDER AUTHORIZATION REQUIRED";
   
   useEffect(() => {
     // Typewriter effect for welcome text
