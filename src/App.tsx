@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
 import BattlePlan from "./pages/BattlePlan";
 
 const queryClient = new QueryClient();
