@@ -22,6 +22,7 @@ const App = () => (
           <Sonner />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/index" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/battle-plan" element={<BattlePlan />} />
             <Route path="/characters" element={<CharacterEditor />} />
